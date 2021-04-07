@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="appstyle.css">
     <link rel="stylesheet" href="table.css">
     <title>BoolFunction()</title>
 </head>
@@ -12,14 +12,21 @@
     <img width="300px" style="max-width: 100%;" src="https://i.ibb.co/q0j86qp/mtd.png" alt="logo">
     <form>
         <input id="input" placeholder="Nhập vào dãy nhị phân" type="text">
-        <button onclick="app(); return false;">OK</button>
+        <button onclick="app(); return false;">
+            <div class="note">
+                Dãy nhị phân phải có độ dài length = 2^k với k là số tự nhiên.
+            </div>
+            <img onclick="note(); return false" src="https://www.iconsdb.com/icons/preview/white/info-xxl.png" class="info-xxl" alt="info-xxl">OK</button>
     </form>
     <div id="answer">
+        <b>DẠNG TUYỂN CHUẨN TẮC</b>
+        <div class="array"></div>
+        <b>DẠNG HỘI CHUẨN TẮC</b>
         <div class="array"></div>
     </div>
     <p><b>BẢNG CHÂN TRỊ</b></p>
     <table id="table"></table>
     <p>Code by <a style="color: black; text-decoration: none;" href="https://fb.com/minhthangd"><b>Minh Thắng</b></a></p>
-    <script src="mainscript.js"></script>
+    <script src="appscript.js"></script>
 </body>
 </html>

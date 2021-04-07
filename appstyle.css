@@ -2,6 +2,7 @@
 *{
     box-sizing: border-box;
     font-family: 'Roboto Condensed', sans-serif;
+    outline: none;
 }
 body{
     margin: 0;
@@ -27,6 +28,7 @@ form input{
     width: 500px;
     height: 100px;
     border: 3px #341a5e solid;
+    position: relative;
 }
 form button{
     width: 100px;
@@ -35,6 +37,12 @@ form button{
     background: #321b57;
     color: white;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: large;
+    font-weight: 900;
+    position: relative;
+    justify-content: center;
 }
 #answer{
     display: flex;
@@ -42,6 +50,10 @@ form button{
     max-width: 100%;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+#answer *{
+    margin-top: 10px;
 }
 .array{
     width: 100%;
@@ -54,7 +66,8 @@ form button{
     padding: 10px;
     box-shadow: inset -10px 0px 10px rgba(0,0,0,0.2);
     overflow: auto;
-
+    font-weight: 900;
+    color: red;
 }
 .array::-webkit-scrollbar{
     width: 5px;
@@ -68,9 +81,42 @@ form button{
 .array div{
     min-width: 100%;
     display: block;
-    height: 100%;
-    font-weight: 900;
-    color: red;
+    height: 50%;
+}
+.info-xxl{
+    background: #ff4b14;
+    width: 20px;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    border-radius: 30px;
+    border: 2px solid #ff4b14;
+    margin: 0;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+.note{
+    background: white;
+    color: black;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    border-radius: 10px;
+    margin: 0;
+    text-align: justify;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    width: 30%;
+    height: 25px;
+    color: white;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.note.active{
+    width: 200px;
+    height: auto;
+    padding: 20px;
+    color: black;
+    background: white;
+    max-height: 100px;
 }
 @media only screen and (max-width:739px){
     form{
@@ -83,7 +129,29 @@ form button{
     form *{
         width: 100%;
     }
+    form button{
+        width: 100%;
+        margin-top: 0px;
+    }
     #answer{
         width: 90%;
+    }
+    .info-xxl{
+        width: 50px;
+        top: -3px;
+        margin: 0;
+        right: -3px;
+        border-radius: 0px;
+        background: #7c37eb;
+        border: none;
+    }
+    .note{
+        right: 47px;
+        border-radius: 0px;
+        top: -3px;
+        height: 50px;
+        width: 20px;
+        background: #482285;
+        color: #482285;
     }
 }
