@@ -582,16 +582,16 @@ function karnaugh4(fun){
     </tr>
     <tr>
         <td>-c</td>
-        <td x = "1" y="0" z="0" style t="0" ="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
+        <td x = "1" y="0" z="0" t="0" style="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
             
         </td>
-        <td x = "1" y="1" z="0" style t="0" ="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
+        <td x = "1" y="1" z="0" t="0" style="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
             
         </td>
-        <td x = "0" y="1" z="0" style t="0" ="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
+        <td x = "0" y="1" z="0" t="0" style="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
             
         </td>
-        <td x = "0" y="0" z="0" style t="0" ="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
+        <td x = "0" y="0" z="0" t="0" style="--i: ${Math.floor(Math.random()*256)}; --j :${Math.floor(Math.random()*256)}; --k: ${Math.floor(Math.random()*256)};">
             
         </td>
         <td>-d</td>
