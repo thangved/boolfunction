@@ -14,12 +14,12 @@ td{
     height: 30px;
 }
 #karnaugh td.active{
-    background: rgb(255, var(--j), var(--k));
+    background: rgb(255, var(--i), 0);
     transition: 0.5s;
 }
 #karnaugh td.active:hover{
-    width: 40px;
-    height: 40px;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-    z-index: 100;
 }

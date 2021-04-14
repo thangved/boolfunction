@@ -1,3 +1,4 @@
+
 var duqyuy = true
 // hàm đảo ngược chuỗi 0101...
 function rev(bin){
@@ -212,30 +213,41 @@ function noteClose(){
     duqyuy = false
 }
 function fun2S(arr){
-    var alpha = 'abcdefghijklmnopqrstuvwxyz'
-    var arr = arr[0]
-    var table = []
-    var len = Math.sqrt(arr.length)
-    var i = 0
-    while(i<len){
-        table = []
-        table.push(addIndex(arr,`-${alpha[i]}`))
-        arr = deleteIndex(arr, `-${alpha[i]}`)
-        table.push(addIndex(arr,alpha[i]))
-        arr = deleteIndex(arr, `${alpha[i]}`)
-        table.push(arr)
-        table.push(matchcheck(table, len, alpha[i]))
-        arr = arrayConvert(table)
-        arr = toSimple(arr)
-        i ++
+    if(arr[1].length==0)
+    {
+        return '1'
     }
-    return arr
+    else if(arr[0].length==0){
+        return '0'
+    }
+    else{
+        var len = arr[0].length + arr[1].length
+        len = Math.log(len)/Math.log(2)
+        var alpha = 'abcdefghijklmnopqrstuvwxyz'
+        var arr = arr[0]
+        var table = []
+        var i = 0
+        while(i<len){
+            table = []
+            table.push(addIndex(arr,`-${alpha[i]}`))
+            arr = deleteIndex(arr, `-${alpha[i]}`)
+            table.push(addIndex(arr,alpha[i]))
+            arr = deleteIndex(arr, `${alpha[i]}`)
+            table.push(arr)
+            table.push(matchcheck(table, len, alpha[i]))
+            arr = arrayConvert(table)
+            arr = toSimple(arr)
+            i ++
+        }
+        return arr
+    }
+    
 }
 function addIndex(arr, x){
     var out = []
     var i = 0
     while(i<arr.length){
-        if(arr[i].indexOf(x)!=0){
+        if(arr[i].indexOf(x)!=-1){
             out.push(arr[i])
         }
         i ++
@@ -330,6 +342,34 @@ function toStringxxx(arr){
     }
     return str
 }
+function checkin(x, y){
+    var xrr = fun2Array(x)
+    var yrr = fun2Array(y)
+    var i = 0
+    var c = 0
+    while(i<yrr.length){
+        if(xrr.indexOf(yrr[i])!=-1)
+        {
+            c ++
+        }
+        i ++
+    }
+    return c == yrr.length ? true : false
+}
+function fun2Array(x){
+    var i = 0
+    var arr = []
+    while(i<x.length){
+        if(x[i]=='('){
+            arr.push(x[i]+x[i+1]+x[i+2]+x[i+3])
+            i +=3
+        }else{
+            arr.push(x[i])
+        }
+        i ++
+    }
+    return arr
+}
 // Hàm đơn giản các phần tử trong mảng
 function toSimple(arr){
     var out = []
@@ -338,7 +378,7 @@ function toSimple(arr){
         var j = i + 1
         var c = true
         while(j<arr.length){
-            if(arr[i].indexOf(arr[j])!=-1||arr[i]==arr[j]){
+            if(checkin(arr[i],arr[j])){
                 c = false
                 break
             }
@@ -351,6 +391,8 @@ function toSimple(arr){
     }
     return out
 }
+
+// Tạo các nguyên nhân nguyên tố.end
 //karnaugh.start
 function karnaughDelete(){
     var tableE = document.querySelector('#karnaugh')
@@ -499,7 +541,6 @@ function karnaugh3(fun){
     </tr>
     `
     var td = document.querySelectorAll('#karnaugh td')
-    console.log(td)
     var i = 0
     while(i<td.length){
         var j = 0
@@ -668,13 +709,6 @@ function app(){
         var input = document.getElementById('input').value
         var fun = number2function(String(input))
         var answerArray = document.querySelectorAll('#answer .array')
-        try{
-            var trueFun = getTrue(input)
-            var len = trueFun[0].length
-        }
-        catch{
-
-        }
         if(valiedate(input)){
             answerArray[0].innerHTML = `<div>1 = ${boolAddFun2str(fun[0])||1}</div>`
             document.querySelectorAll('#answer .array div')[0].style.width = `${boolAddFun2str(fun[0]).length*10}px`
@@ -683,12 +717,7 @@ function app(){
             answerArray[2].innerHTML = `<div>${toStringxxx(fun2S(fun))}</div>`
             document.querySelectorAll('#answer .array div')[2].style.width = `${fun2S(fun).length*20}px`
             tableDraw()
-            try{
-                karnaugh(trueFun, len)
-            }
-            catch{
-                
-            }
+            karnaugh(getTrue(input), Math.log(input.length)/Math.log(2))
         }
         else{
             alert("Số nhập vào không hợp lệ")
