@@ -302,10 +302,22 @@ function match(arr, len, x, y){
         var i = 0
         while(i<len){
             if(x!=alpha[i]){
-                if(arr[0].indexOf(`-${alpha[i]}`)!=-1||arr[1].indexOf(`-${alpha[i]}`)!=-1){
+                if((arr[0].indexOf(alpha[i])!=-1&&arr[1].indexOf(alpha[i])==-1)||(arr[1].indexOf(alpha[i])!=-1&&arr[0].indexOf(alpha[i])==-1)){
+                    if(arr[0].indexOf(`-${alpha[i]}`)!=-1||arr[1].indexOf(`-${alpha[i]}`)!=-1){
+                        str += `(-${alpha[i]})`
+                    }
+                    else{
+                        str += alpha[i]
+                    }
+                }
+                else if(arr[0].indexOf(`-${alpha[i]}`)!=-1&&arr[1].indexOf(`-${alpha[i]}`)!=-1)
+                {
                     str += `(-${alpha[i]})`
                 }
-                else if(arr[0].indexOf(x)!=-1||arr[1].indexOf(x)!=-1){
+                else if((arr[0].indexOf(`-${alpha[i]}`)!=-1&&arr[1].indexOf(`-${alpha[i]}`)==-1)||(arr[1].indexOf(`-${alpha[i]}`)!=-1&&arr[0].indexOf(`-${alpha[i]}`)==-1)){
+                    
+                }
+                else if(arr[0].indexOf(`-${alpha[i]}`)!=-1||arr[1].indexOf(`-${alpha[i]}`)!=-1){
                     str += alpha[i]
                 }
             }
@@ -362,8 +374,10 @@ function fun2Array(x){
     while(i<x.length){
         if(x[i]=='('){
             arr.push(x[i]+x[i+1]+x[i+2]+x[i+3])
-            i +=3
-        }else{
+            i += 3
+        }
+        else
+        {
             arr.push(x[i])
         }
         i ++
@@ -378,7 +392,7 @@ function toSimple(arr){
         var j = i + 1
         var c = true
         while(j<arr.length){
-            if(checkin(arr[i],arr[j])){
+            if(checkin(arr[i], arr[j])){
                 c = false
                 break
             }
@@ -656,7 +670,6 @@ function karnaugh4(fun){
     </tr>
     `
     var td = document.querySelectorAll('#karnaugh td')
-    console.log(td)
     var i = 0
     while(i<td.length){
         var j = 0
